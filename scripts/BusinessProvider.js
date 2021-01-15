@@ -128,3 +128,19 @@ export const manufacturingBusinesses = businesses.filter(businessObject => {
   }
   return false
 })
+
+export const agentList = businesses.map(businessObject => {
+  let newObj = {
+    companyName: `${businessObject.companyName}`,
+    fullName: `${businessObject.purchasingAgent.nameFirst}` + ` ` + `${businessObject.purchasingAgent.nameLast}`,
+    phoneWork: `${businessObject.phoneWork}`
+  }
+
+  return newObj
+})
+
+export const findBusiness = (businessCriteria) => {
+  return businesses.find(business => business.companyName.toLowerCase().includes(businessCriteria) || 
+  business.purchasingAgent.nameFirst.toLowerCase().includes(businessCriteria) || 
+  business.purchasingAgent.nameLast.toLowerCase().includes(businessCriteria))
+}
